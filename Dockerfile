@@ -1,6 +1,6 @@
 # Use the official Python image as the base image
 FROM netboxcommunity/netbox:latest
-
+COPY DigiCertGlobalRootCA.crt.pem /root/.postgresql/postgresql.crt:z,ro
 
 # Expose port 8000 for NetBox
 EXPOSE 8000:8080/tcp
