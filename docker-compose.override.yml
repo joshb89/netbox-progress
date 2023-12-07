@@ -1,0 +1,11 @@
+version: '3.4'
+services:
+  netbox:
+    ports:
+      - 8000:8080
+    environment:
+     - DB_HOST=netbox.postgres.database.azure.com
+     - DB_USER=netbox
+     - DB_NAME=netbox
+     - DB_PASSWORD=J5brHrAXFLQSif0K
+     - SECRET_KEY=r(m)9nLGnz$(_q3N4z1k(EFsMCjjjzx08x9VhNVcfd%6RF#r!6DE@+V5Zk2X   
