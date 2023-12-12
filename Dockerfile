@@ -1,6 +1,7 @@
 # Use the official Python image as the base image
 FROM netboxcommunity/netbox:latest
 USER unit:root
+#COPY ./configuration.py /etc/netbox/config/configuration.py
 # Expose port 8000 for NetBox
 EXPOSE 8000:8080/tcp
 
@@ -31,7 +32,7 @@ ENV WEBHOOKS_ENABLED=true
 #ENV DB_PASSWORD=secretref:dbpassword
 
 #Testing Network Team Plugin
-COPY ./configuration.py /etc/netbox/config/configuration.py
+
 COPY ./phonebox_plugin /source/phonebox_plugin/phonebox_plugin/
 COPY ./setup.py /source/phonebox_plugin/
 COPY ./MANIFEST.in /source/phonebox_plugin/
