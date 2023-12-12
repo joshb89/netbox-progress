@@ -65,20 +65,19 @@ if '*' not in ALLOWED_HOSTS and 'localhost' not in ALLOWED_HOSTS:
 # PostgreSQL database configuration. See the Django documentation for a complete list of available parameters:
 #   https://docs.djangoproject.com/en/stable/ref/settings/#databases
 DATABASE = {
-       'NAME': environ.get('DB_NAME', 'netbox'),       # Database name
-       'USER': environ.get('DB_USER', ''),             # PostgreSQL username
-       'PASSWORD': environ.get('DB_PASSWORD', ''), # password
-       'HOST': environ.get('DB_HOST', 'localhost'),    # Database server
-       'PORT': environ.get('DB_PORT', ''),             # Database port (leave blank for default)
-       'OPTIONS': {
-         'sslmode': environ.get('DB_SSLMODE', 'prefer'), # Database connection SSLMODE
-         'sslcert': environ.get('DB_CLIENT_SSL_CERT', None),
-         'sslkey':  environ.get('DB_CLIENT_SSL_KEY',  None),
-         'sslrootcert': environ.get('DB_CLIENT_SSL_CA', None)
-       },
-       'CONN_MAX_AGE': environ.get('DB_CONN_MAX_AGE', 300), # Max database connection age
-       'DISABLE_SERVER_SIDE_CURSORS': environ.get('DB_DISABLE_SERVER_SIDE_CURSORS', False)
-    }
+    'NAME': environ.get('DB_NAME', 'netbox'),       # Database name
+    'USER': environ.get('DB_USER', ''),             # PostgreSQL username
+    'PASSWORD': _read_secret('db_password', environ.get('DB_PASSWORD', '')),
+                                                    # PostgreSQL password
+    'HOST': environ.get('DB_HOST', 'localhost'),    # Database server
+    'PORT': environ.get('DB_PORT', ''),             # Database port (leave blank for default)
+    'OPTIONS': {'sslmode': environ.get('DB_SSLMODE', 'prefer')},
+                                                    # Database connection SSLMODE
+    'CONN_MAX_AGE': _environ_get_and_map('DB_CONN_MAX_AGE', '300', _AS_INT),
+                                                    # Max database connection age
+    'DISABLE_SERVER_SIDE_CURSORS': _environ_get_and_map('DB_DISABLE_SERVER_SIDE_CURSORS', 'False', _AS_BOOL),
+                                                    # Disable the use of server-side cursors transaction pooling
+}
 
 # Redis database settings. Redis is used for caching and for queuing background tasks such as webhook events. A separate
 # configuration exists for each. Full connection details are required in both sections, and it is strongly recommended
@@ -244,9 +243,9 @@ if 'PAGINATE_COUNT' in environ:
     PAGINATE_COUNT = _environ_get_and_map('PAGINATE_COUNT', None, _AS_INT)
 
 # # Enable installed plugins. Add the name of each plugin to the list.
- PLUGINS = [
-         'phonebox_plugin',
- ]
+# PLUGINS = [
+    'phonebox_plugin',
+]
 
 # # Plugins configuration settings. These settings are used by various plugins that the user may have installed.
 # # Each key in the dictionary is the name of an installed plugin and its value is a dictionary of settings.
