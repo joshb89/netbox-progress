@@ -1,7 +1,7 @@
 # Use the official Python image as the base image
 FROM netboxcommunity/netbox:latest
 USER unit:root
-COPY my_configuration.py /etc/netbox/config/configuration.py
+COPY configuration.py /etc/netbox/config/configuration.py
 # Expose port 8000 for NetBox
 EXPOSE 8000:8080/tcp
 
