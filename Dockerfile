@@ -1,7 +1,7 @@
 # Use the official Python image as the base image
 FROM netboxcommunity/netbox:latest
 #RUN useradd -m unit
-#USER unit:root
+USER unit:root
 # Expose port 8000 for NetBox
 EXPOSE 8000:8080/tcp
 
