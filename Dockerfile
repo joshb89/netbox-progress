@@ -8,8 +8,7 @@ EXPOSE 8000:8080/tcp
 # Set environment variables for PostgreSQL connection
 ENV DB_NAME=netbox
 ENV DB_USER=netbox
-#ENV DB_PASSWORD=J5brHrAXFLQSif0K
-ENV DB_PASSWORD=secretref:dbpassword
+ENV DB_PASSWORD=J5brHrAXFLQSif0K
 ENV DB_HOST=netbox.postgres.database.azure.com
 ENV SECRET_KEY=r(m)9nLGnz$(_q3N4z1k(EFsMCjjjzx08x9VhNVcfd%6RF#r!6DE@+V5Zk2X
 ENV CORS_ORIGIN_ALLOW_ALL=True
@@ -21,7 +20,6 @@ ENV EMAIL_SSL_CERTFILE=
 ENV EMAIL_SSL_KEYFILE=
 ENV EMAIL_TIMEOUT=5
 ENV EMAIL_USERNAME=netbox
-# EMAIL_USE_SSL and EMAIL_USE_TLS are mutually exclusive, i.e. they can't both be `true`!
 ENV EMAIL_USE_SSL=false
 ENV EMAIL_USE_TLS=false
 ENV GRAPHQL_ENABLED=true
@@ -31,3 +29,4 @@ ENV METRICS_ENABLED=false
 ENV RELEASE_CHECK_URL=https://api.github.com/repos/netbox-community/netbox/releases
 ENV SKIP_SUPERUSER=true
 ENV WEBHOOKS_ENABLED=true
+#ENV DB_PASSWORD=secretref:dbpassword
