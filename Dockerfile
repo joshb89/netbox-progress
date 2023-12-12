@@ -1,6 +1,5 @@
 # Use the official Python image as the base image
 FROM netboxcommunity/netbox:latest
-#RUN useradd -m unit
 USER unit:root
 # Expose port 8000 for NetBox
 EXPOSE 8000:8080/tcp
@@ -39,3 +38,5 @@ COPY ./README.md /source/phonebox_plugin/
 USER root
 RUN pip3 install --no-cache-dir /source/phonebox_plugin/
 #RUN /opt/netbox/venv/bin/pip install  --no-warn-script-location /source/phonebox_plugin/
+
+USER unit:root
