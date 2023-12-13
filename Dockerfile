@@ -1,5 +1,6 @@
 # Use the official Python image as the base image
-FROM netboxcommunity/netbox:latest-ldap
+#FROM netboxcommunity/netbox:latest-ldap
+FROM netboxcommunity/netbox:latest
 USER unit:root
 COPY ./configuration.py /etc/netbox/config/configuration.py
 # Expose port 8000 for NetBox
