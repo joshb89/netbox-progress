@@ -36,10 +36,10 @@ ENV WEBHOOKS_ENABLED=true
 #ENV DB_PASSWORD=secretref:dbpassword
 
 #Testing Network Team phonebox Plugin
-COPY ./phonebox_plugin /source/phonebox_plugin/phonebox_plugin/
-COPY ./setup.py /source/phonebox_plugin/
-COPY ./MANIFEST.in /source/phonebox_plugin/
-COPY ./README.md /source/phonebox_plugin/
+COPY ./Plugins/phonebox/phonebox_plugin /source/phonebox_plugin/phonebox_plugin/
+COPY ./Plugins/phonebox/setup.py /source/phonebox_plugin/
+COPY ./Plugins/phonebox/MANIFEST.in /source/phonebox_plugin/
+COPY ./Plugins/phonebox/README.md /source/phonebox_plugin/
 USER root
 RUN pip3 install --no-cache-dir /source/phonebox_plugin/
 
