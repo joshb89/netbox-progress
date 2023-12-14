@@ -1,7 +1,8 @@
 # Use the official Python image as the base image
 #FROM netboxcommunity/netbox:latest-ldap
-#FROM netboxcommunity/netbox:latest
-FROM netboxcommunity/netbox:v3.5.9
+FROM netboxcommunity/netbox:latest
+#FROM netboxcommunity/netbox:v3.5.9
+
 USER unit:root
 COPY ./configuration.py /etc/netbox/config/configuration.py
 
@@ -43,7 +44,7 @@ USER root
 RUN pip3 install --no-cache-dir /source/phonebox_plugin/
 
 #Network team ACL plugin
-RUN pip3 install netbox-acls
+#RUN pip3 install netbox-acls
 
 #Setting user back to unit for service operations
 USER unit:root
