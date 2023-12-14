@@ -1,7 +1,7 @@
 # Use the official Python image as the base image
 #FROM netboxcommunity/netbox:latest-ldap
 #FROM netboxcommunity/netbox:latest
-FROM netboxcommunity/netbox:v3.5
+FROM netboxcommunity/netbox:v3.3.6
 USER unit:root
 COPY ./configuration.py /etc/netbox/config/configuration.py
 
