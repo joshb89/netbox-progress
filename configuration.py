@@ -243,16 +243,13 @@ if 'PAGINATE_COUNT' in environ:
     PAGINATE_COUNT = _environ_get_and_map('PAGINATE_COUNT', None, _AS_INT)
 
 # # Enable installed plugins. Add the name of each plugin to the list.
-PLUGINS = [ 'phonebox_plugin', 'netbox_acls',
+PLUGINS = [ 'phonebox_plugin',
 ]
 
 # # Plugins configuration settings. These settings are used by various plugins that the user may have installed.
 # # Each key in the dictionary is the name of an installed plugin and its value is a dictionary of settings.
-PLUGINS_CONFIG = {
-   "netbox_acls": {
-        "top_level_menu": True # If set to True the plugin will add a top level menu item for the plugin. If set to False the plugin will add a menu item under the Plugins menu item.  Default is set to True.
-    },
-}
+#PLUGINS_CONFIG = {
+#}
 
 
  
