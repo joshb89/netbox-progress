@@ -3,10 +3,11 @@
 FROM netboxcommunity/netbox:latest
 USER unit:root
 COPY ./configuration.py /etc/netbox/config/configuration.py
+
 # Expose port 8000 for NetBox
 EXPOSE 8000:8080/tcp
 
-# Set environment variables for PostgreSQL connection
+# Set environment variables for Postgres as well as some foundational app settings
 ENV DB_NAME=netbox
 ENV DB_USER=netbox
 #ENV DB_PASSWORD=J5brHrAXFLQSif0K
@@ -32,14 +33,16 @@ ENV SKIP_SUPERUSER=true
 ENV WEBHOOKS_ENABLED=true
 #ENV DB_PASSWORD=secretref:dbpassword
 
-#Testing Network Team Plugin
-
+#Testing Network Team phonebox Plugin
 COPY ./phonebox_plugin /source/phonebox_plugin/phonebox_plugin/
 COPY ./setup.py /source/phonebox_plugin/
 COPY ./MANIFEST.in /source/phonebox_plugin/
 COPY ./README.md /source/phonebox_plugin/
 USER root
 RUN pip3 install --no-cache-dir /source/phonebox_plugin/
-#RUN /opt/netbox/venv/bin/pip install  --no-warn-script-location /source/phonebox_plugin/
 
+#Network team ACL plugin
+pip install netbox-acls
+
+#Setting user back to unit for service operations
 USER unit:root
