@@ -42,7 +42,7 @@ USER root
 RUN pip3 install --no-cache-dir /source/phonebox_plugin/
 
 #Network team ACL plugin
-pip install netbox-acls
+RUN pip3 install netbox-acls
 
 #Setting user back to unit for service operations
 USER unit:root
