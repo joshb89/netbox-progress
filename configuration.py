@@ -243,7 +243,7 @@ if 'PAGINATE_COUNT' in environ:
     PAGINATE_COUNT = _environ_get_and_map('PAGINATE_COUNT', None, _AS_INT)
 
 # # Enable installed plugins. Add the name of each plugin to the list.
-PLUGINS = [ 'phonebox_plugin', 'netbox_floorplan',
+PLUGINS = [ 'phonebox_plugin',
 ]
 
 # # Plugins configuration settings. These settings are used by various plugins that the user may have installed.
